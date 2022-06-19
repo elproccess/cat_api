@@ -1,16 +1,13 @@
 import { useEffect, useState } from "react";
 import "./App.css";
-import catPage from "./catPage";
 import { UserCard } from "react-ui-cards";
-import { useNavigate, Link } from "react-router-dom";
+import { Link } from "react-router-dom";
 import { useLoadingContext } from "react-router-loading";
-
 
 function App() {
   const [catsBreed, setCatBreed] = useState([]);
   const [description, setDescription] = useState("");
 
-  let navigate = useNavigate();
   let text = "";
   const loadingContext = useLoadingContext();
 
@@ -21,25 +18,6 @@ function App() {
         name={prop.name}
         positionName={prop.description}
       />
-      <div style={{ display: "none" }}>{prop.wikipedia_url}</div>
-      <nav>
-    
-          { <Link
-          to="catPage"
-          onClick={() => {
-            handleSubmit(prop);
-          }}
-          state={{
-            name: prop.name,
-            description: prop.description,
-            wiki: prop.wikipedia_url,
-            value: text.gsh===null ? "loading..." : text.gsh,
-          }}
-        >
-         {prop.name}
-        </Link>}
-      
-      </nav>
     </div>
   );
 
@@ -56,8 +34,8 @@ function App() {
     }).then(async function (response) {
       text = await response.json();
       setDescription(text.gsh);
-       console.log(text.gsh);
-       loadingContext.done();
+      console.log(text.gsh);
+      loadingContext.done();
     });
   };
   let fetchCats2 = async () => {
@@ -67,45 +45,43 @@ function App() {
       .catch((err) => console.log(err));
   };
 
-  const callback = () => {
-    console.log(description.gsh);
-  }
-
   useEffect(() => {
     fetchCats2();
-    console.log(description);
+    console.log(catsBreed);
   }, []);
-  
-  const delay = ms => new Promise(res => setTimeout(res, ms));
-  
 
   return (
     <div className="App">
       {catsBreed.map((val) => (
-        <Link 
-        key={val.id}
-        to="catPage"
-        onClick={() => {
-          handleSubmit(val);
-        }} 
-         
-        state={{
-          name: val.name,
-          description: val.description,
-          wiki: val.wikipedia_url,
-          value: text.gsh===null ? "loading..." : text.gsh,
-        }}>
-        <CatComponent
-          wikipedia_url={val.wikipedia_url}
-          description={val.description}
-          name={val.name}
-          headerimage={
-            val.image === undefined
-              ? "https://i.imgur.com/XJxqvsU.jpg"
-              : val.image.url
-          }
-        />
+       <div className="card-container">
+       <Link
+          key={val.id}
+          to="catPage"
+          onClick={() => {
+            handleSubmit(val);
+          }}
+          state={{
+            name: val.name,
+            description: val.description,
+            wiki: val.wikipedia_url,
+            value: text.gsh === null ? "loading..." : text.gsh,
+            image: val.image === undefined
+            ? "https://i.imgur.com/XJxqvsU.jpg"
+            : val.image.url
+          }}
+        >
+          <CatComponent
+            wikipedia_url={val.wikipedia_url}
+            description={val.description}
+            name={val.name}
+            headerimage={
+              val.image === undefined
+                ? "https://i.imgur.com/XJxqvsU.jpg"
+                : val.image.url
+            }
+          />
         </Link>
+        </div>
       ))}
     </div>
   );
