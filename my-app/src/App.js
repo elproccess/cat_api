@@ -34,7 +34,6 @@ function App() {
     }).then(async function (response) {
       text = await response.json();
       setDescription(text.gsh);
-      console.log(text.gsh);
       loadingContext.done();
     });
   };
@@ -64,6 +63,8 @@ function App() {
             name: val.name,
             description: val.description,
             wiki: val.wikipedia_url,
+            energy: val.energy_level,
+            shedding: val.shedding_level,
             value: text.gsh === null ? "loading..." : text.gsh,
             image: val.image === undefined
             ? "https://i.imgur.com/XJxqvsU.jpg"

@@ -2,3 +2,26 @@
     height: 20%;
     width: 80%;
 }
+
+.card-icons-row{
+    width: 100%;
+    display: flex;
+    flex-direction: row;
+}
+
+.card-icons-energy{
+    display: flex;
+    flex-direction: row;
+    background-color: gray;
+    border-radius: 5px !important;
+    margin-left: 25px;
+    
+}
+.card-icons-shedding{
+    display: flex;
+    flex-direction: row;
+    background-color: gray;
+    border-radius: 5px !important;
+    margin-left: 130px;
+    
+}

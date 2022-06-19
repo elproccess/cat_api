@@ -6,17 +6,17 @@ import ClipLoader from "react-spinners/ClipLoader";
 import "./catPage.css";
 
 import { FcFlashOn } from "react-icons/fc";
+import { RiCloudy2Fill } from "react-icons/ri";
 
 const CatPage = () => {
   let data = useLocation();
-  const [value, setValue] = useState("");
   let [loading, setLoading] = useState(true);
+  const [value, setValue] = useState("");
   const delay = (ms) => new Promise((res) => setTimeout(res, ms));
 
   useEffect(() => {
     fetchwiki();
   }, [value]);
-
 
   let fetchwiki = async () => {
     delay(5000);
@@ -32,8 +32,28 @@ const CatPage = () => {
       <div className="card-image">
         <img className="card-img" src={data.state.image} />
       </div>
-      <div className="card-icons"><FcFlashOn /></div>
-      <ClipLoader color={'#565959'} loading={loading}  size={150} />
+      <div className="card-icons-row">
+        <div className="card-icons-energy">
+          <FcFlashOn size={30} className="card-icons-energy-icon" />
+          <div className="card-icons-energy-text">{data.state.energy}</div>
+        </div>
+
+        <div className="card-icons-shedding">
+          <RiCloudy2Fill size={30} />
+          <div className="card-icons-shedding-text">{data.state.shedding}</div>
+        </div>
+
+        <div className="card-icons-shedding">
+          <RiCloudy2Fill size={30} />
+          <div className="card-icons-shedding-text">{data.state.shedding}</div>
+        </div>
+
+        <div className="card-icons-shedding">
+          <RiCloudy2Fill size={30} />
+          <div className="card-icons-shedding-text">{data.state.shedding}</div>
+        </div>
+      </div>
+      <ClipLoader color={"#565959"} loading={loading} size={150} />
       {data.state.name} {value}
     </div>
   );
