@@ -65,6 +65,8 @@ function App() {
             wiki: val.wikipedia_url,
             energy: val.energy_level,
             shedding: val.shedding_level,
+            life: val.life_span,
+            origin: val.origin,
             value: text.gsh === null ? "loading..." : text.gsh,
             image: val.image === undefined
             ? "https://i.imgur.com/XJxqvsU.jpg"

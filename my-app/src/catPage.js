@@ -7,6 +7,8 @@ import "./catPage.css";
 
 import { FcFlashOn } from "react-icons/fc";
 import { RiCloudy2Fill } from "react-icons/ri";
+import { FcBiotech } from "react-icons/fc";
+import { FcGlobe } from "react-icons/fc";
 
 const CatPage = () => {
   let data = useLocation();
@@ -29,8 +31,11 @@ const CatPage = () => {
 
   return (
     <div>
-      <div className="card-image">
-        <img className="card-img" src={data.state.image} />
+      <div className="card-image-row">
+        <div className="card-image-container">
+          <img className="card-img" src={data.state.image} />
+          <FcFlashOn size={30} className="card-icohiojl" />
+        </div>
       </div>
       <div className="card-icons-row">
         <div className="card-icons-energy">
@@ -44,13 +49,13 @@ const CatPage = () => {
         </div>
 
         <div className="card-icons-shedding">
-          <RiCloudy2Fill size={30} />
-          <div className="card-icons-shedding-text">{data.state.shedding}</div>
+          <FcBiotech size={30} />
+          <div className="card-icons-shedding-text">{data.state.life}</div>
         </div>
 
         <div className="card-icons-shedding">
-          <RiCloudy2Fill size={30} />
-          <div className="card-icons-shedding-text">{data.state.shedding}</div>
+          <FcGlobe size={30} />
+          <div className="card-icons-shedding-text">{data.state.origin}</div>
         </div>
       </div>
       <ClipLoader color={"#565959"} loading={loading} size={150} />
