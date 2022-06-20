@@ -52,12 +52,11 @@ To get a local copy up and running follow these simple example steps.
 
 when you are in the `server` folder, make sure you run.
 * npm
-  ```sh
+```sh
   node index.js
-  
-  Runs the script on port number 3001.\
+  ```
+Runs the script on port number 3001.\
   this will start the server code
-  
 
 when you are in the `my-app` folder, make sure you run.
 * npm
