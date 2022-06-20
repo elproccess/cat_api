@@ -1,4 +1,5 @@
 ## About The Project: cat_api
+<img src ="./gif.gif" alt="sampleGif">
 
 
 this is a simple project made with react and node to simply display data from a catApi endpoint.
